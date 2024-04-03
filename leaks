@@ -1,0 +1,60 @@
+
+Segfault sur 
+ -good/test_pos_right :
+
+111111111111111111111
+1000000000000000000E1
+111111111111111111111
+
+ -good/test_pos_bottom :
+
+111
+101
+101
+101
+101
+101
+101
+101
+101
+101
+101
+1S1
+111
+    -subject_map
+        1111111111111111111111111
+        1000000000110000000000001
+        1011000001110000000000001
+        1001000000000000000000001
+111111111011000001110000000000001
+100000000011000001110111111111111
+11110111111111011100000010001
+11110111111111011101010010001
+11000000110101011100000010001
+10000000000000001100000010001
+10000000000000001101010010001
+11000001110101011111011110N0111
+11110111 1110101 101111010001
+
+
+Problemes de leaks sur toutes les good: 
+==204821==   total heap usage: 27,827 allocs, 27,825 frees, 1,232,868 bytes allocated
+==204821== 
+==204821== 88 bytes in 1 blocks are still reachable in loss record 1 of 2
+==204821==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==204821==    by 0x4079AB: mlx_int_new_xshm_image (in /mnt/nfs/homes/eghaffar/Documents/CUB_Merge/cub3D)
+==204821==    by 0x407CD2: mlx_new_image (in /mnt/nfs/homes/eghaffar/Documents/CUB_Merge/cub3D)
+==204821==    by 0x4065F0: image_new (image.c:15)
+==204821==    by 0x4050E6: do_frame (raycasting.c:18)
+==204821==    by 0x4076AC: mlx_loop (in /mnt/nfs/homes/eghaffar/Documents/CUB_Merge/cub3D)
+==204821==    by 0x403C11: main (main.c:157)
+==204821== 
+==204821== 136 bytes in 1 blocks are still reachable in loss record 2 of 2
+==204821==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==204821==    by 0x48790C3: XShmCreateImage (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==204821==    by 0x4079D6: mlx_int_new_xshm_image (in /mnt/nfs/homes/eghaffar/Documents/CUB_Merge/cub3D)
+==204821==    by 0x407CD2: mlx_new_image (in /mnt/nfs/homes/eghaffar/Documents/CUB_Merge/cub3D)
+==204821==    by 0x4065F0: image_new (image.c:15)
+==204821==    by 0x4050E6: do_frame (raycasting.c:18)
+==204821==    by 0x4076AC: mlx_loop (in /mnt/nfs/homes/eghaffar/Documents/CUB_Merge/cub3D)
+==204821==    by 0x403C11: main (main.c:157)

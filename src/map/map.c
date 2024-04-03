@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 11:52:20 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:33:33 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:19:33 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	nb_lines_and_col(t_map *map_struct)
+int	nb_lines_and_col(t_map *map_data)
 {
 	int	lines;
 	int	nb_of_cols;
 
 	nb_of_cols = 0;
-	if (open_for_the_map(map_struct) == 1)
+	if (open_for_the_map(map_data) == 1)
 	{
 		ft_putendl_fd_cub(INV_FILE_NOT_FOUND, 2);
 		return (EXIT_FAILURE);
@@ -26,39 +26,39 @@ int	nb_lines_and_col(t_map *map_struct)
 	lines = 0;
 	while (1)
 	{
-		map_struct->line = get_next_line(map_struct->fd);
-		if (map_struct->line == NULL)
+		map_data->line = get_next_line(map_data->fd);
+		if (map_data->line == NULL)
 			break ;
-		actualize_nb_of_col(map_struct->line, &nb_of_cols);
-		free(map_struct->line);
+		actualize_nb_of_col(map_data->line, &nb_of_cols);
+		free(map_data->line);
 		lines++;
 	}
-	close(map_struct->fd);
-	map_struct->y = lines;
-	map_struct->x = nb_of_cols;
+	close(map_data->fd);
+	map_data->y = lines;
+	map_data->x = nb_of_cols;
 	return (0);
 }
 
-char	**read_file_lines(t_map *map_struct)
+char	**read_file_lines(t_map *map_data)
 {
 	int	i;
 
-	if (alloc_and_stock_lines(map_struct) == 1)
+	if (alloc_and_stock_lines(map_data) == 1)
 	{
 		ft_putendl_fd_cub("Error\nAt read_file_lines", 2);
 		return (NULL);
 	}
 	i = 0;
-	while (i <= map_struct->y)
+	while (i <= map_data->y)
 	{
-		map_struct->line = get_next_line(map_struct->fd);
-		if (!map_struct->line)
+		map_data->line = get_next_line(map_data->fd);
+		if (!map_data->line)
 			break ;
-		trim_new_line(map_struct->line);
-		map_struct->map[i] = map_struct->line;
+		trim_new_line(map_data->line);
+		map_data->map[i] = map_data->line;
 		i++;
 	}
-	map_struct->map[i] = NULL;
-	close(map_struct->fd);
-	return (map_struct->map);
+	map_data->map[i] = NULL;
+	close(map_data->fd);
+	return (map_data->map);
 }

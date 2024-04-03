@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_and_colors.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 11:55:51 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:30:39 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:23:01 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	handle_floor_color(char *line, t_config *config)
 		line++;
 	init_floor_color(line, config);
 	if (config->flag == 6)
-		config->map_struct->j_end_of_tc = ft_strlen(line);
+		config->map_data->j_end_of_tc = ft_strlen(line);
 }
 
 void	handle_ceiling_color(char *line, t_config *config)
@@ -55,7 +55,7 @@ void	handle_ceiling_color(char *line, t_config *config)
 		line++;
 	init_ceiling_color(line, config);
 	if (config->flag == 6)
-		config->map_struct->j_end_of_tc = ft_strlen(line);
+		config->map_data->j_end_of_tc = ft_strlen(line);
 }
 
 int	check_texture_and_color(char *line, t_config *config)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleaning.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:07:22 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:30:54 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:19:33 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_strs(char **map)
 	free(map);
 }
 
-void	free_map_struct(t_map *map_data)
+void	free_map_data(t_map *map_data)
 {
 	int	i;
 
@@ -83,9 +83,9 @@ void	free_config(t_config *config)
 		free(config->west_texture);
 	if (config->east_texture)
 		free(config->east_texture);
-	if (config->map_struct)
+	if (config->map_data)
 	{
-		free_map_struct(config->map_struct);
+		free_map_data(config->map_data);
 	}
 	free(config);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 13:48:55 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:36:06 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:19:33 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*trim_new_line(char *line)
 	return (line);
 }
 
-int	is_valid_scene_character(char c, t_map *map_struct)
+int	is_valid_scene_character(char c, t_map *map_data)
 {
 	if (c == PLAYER_NORTH || c == PLAYER_SOUTH || is_whitespace(c)
 		|| c == PLAYER_EAST || c == PLAYER_WEST)
@@ -30,8 +30,8 @@ int	is_valid_scene_character(char c, t_map *map_struct)
 		if (c == PLAYER_NORTH || c == PLAYER_SOUTH || c == PLAYER_EAST
 			|| c == PLAYER_WEST)
 		{
-			map_struct->flag_pos += 1;
-			map_struct->player_start_dir = c;
+			map_data->flag_pos += 1;
+			map_data->player_start_dir = c;
 			return (EXIT_SUCCESS);
 		}
 		return (EXIT_SUCCESS);

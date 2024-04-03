@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 09:40:55 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:15:55 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:19:33 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,28 @@ int	open_for_the_xpm(char *filename)
 	return (EXIT_SUCCESS);
 }
 
-int	open_for_the_map(t_map *map_struct)
+int	open_for_the_map(t_map *map_data)
 {
-	map_struct->fd = open(map_struct->map_name, O_RDONLY | __O_DIRECTORY);
-	if (map_struct->fd > 0)
+	map_data->fd = open(map_data->map_name, O_RDONLY | __O_DIRECTORY);
+	if (map_data->fd > 0)
 	{
-		close(map_struct->fd);
+		close(map_data->fd);
 		return (EXIT_FAILURE);
 	}
-	map_struct->fd = open(map_struct->map_name, O_RDONLY);
-	if (map_struct->fd == -1)
+	map_data->fd = open(map_data->map_name, O_RDONLY);
+	if (map_data->fd == -1)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
-int	alloc_and_stock_lines(t_map *map_struct)
+int	alloc_and_stock_lines(t_map *map_data)
 {
-	if (open_for_the_map(map_struct) == -1)
+	if (open_for_the_map(map_data) == -1)
 		return (EXIT_FAILURE);
-	map_struct->map = ft_calloc(map_struct->y + 1, sizeof(char *));
-	if (!map_struct->map)
+	map_data->map = ft_calloc(map_data->y + 1, sizeof(char *));
+	if (!map_data->map)
 	{
-		close(map_struct->fd);
+		close(map_data->fd);
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);
