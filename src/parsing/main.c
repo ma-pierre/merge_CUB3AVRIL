@@ -6,7 +6,7 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:45:06 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 16:37:59 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:55:07 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,19 +122,20 @@ int	main(int argc, char *argv[])
 	while(data.game_map[i])
 	{
 			j = 0;
-		while(data.game_map[i][j])
+		while(data.game_map[i][j])   //[ligne][col]
 		{ 
 			if (data.game_map[i][j] == data.player_start_dir)
 			{
-				data.pos_x = (double)j ;
-				data.pos_y = (double)i ;
-				data.game_map[i][j] = 0;
+				data.pos_y = (double)j;
+				data.pos_x = (double)i;
+				data.game_map[i][j] = '0';
 				printf(" i = %d j = %d \n", i , j);
 			}
 			j++;
 		}
 		i++;
 	}
+	//print_the_map(config->map_struct->map);
 	data.mlx = mlx_init();
 	if (!data.mlx)
 	{
