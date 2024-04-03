@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:35:51 by mapierre          #+#    #+#             */
-/*   Updated: 2024/04/03 15:43:32 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:19:33 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,41 +65,41 @@ enum		e_scene_characters
 };
 
 /* Collect the map*/
-t_map	*init_the_map_struct(char *filename);
-int		nb_lines_and_col(t_map *map_struct);
-char	**read_file_lines(t_map *map_struct);
-void	retrieve_the_final_map(t_map *map_struct, t_config *config);
+t_map	*init_the_map_data(char *filename);
+int		nb_lines_and_col(t_map *map_data);
+char	**read_file_lines(t_map *map_data);
+void	retrieve_the_final_map(t_map *map_data, t_config *config);
 void	is_valid(int i, int j, t_config *config);
-int		map_empty(t_map *map_struct, t_config *config);
-int		is_map_border_closed(t_map *map_struct, t_config *config, char **map);
+int		map_empty(t_map *map_data, t_config *config);
+int		is_map_border_closed(t_map *map_data, t_config *config, char **map);
 // Assignation
-int		count_and_read(t_map *map_struct);
+int		count_and_read(t_map *map_data);
 char	*trim_new_line(char *line);
-int		is_valid_scene_character(char c, t_map *map_struct);
+int		is_valid_scene_character(char c, t_map *map_data);
 void	actualize_nb_of_col(char *line, int *nb_of_cols);
 // Parsing
-int		parsing(t_map *map_struct, t_config *config);
+int		parsing(t_map *map_data, t_config *config);
 int		check_if_dotcub(char *filename);
 int		check_if_xpm(char *filename);
-int		map_empty(t_map *map_struct, t_config *config);
-int		is_map_valid(t_map *map_struct, t_config *config);
-int		is_map_border_closed(t_map *map_struct, t_config *config, char **map);
+int		map_empty(t_map *map_data, t_config *config);
+int		is_map_valid(t_map *map_data, t_config *config);
+int		is_map_border_closed(t_map *map_data, t_config *config, char **map);
 int		is_whitespace(char c);
 int		check_texture_and_color(char *line, t_config *config);
 int		under_the_map(t_config *config);
-void	check_first_line(t_map *map_struct, t_config *config, char **map);
+void	check_first_line(t_map *map_data, t_config *config, char **map);
 int		check_player(char c);
-void	check_particular_cases(t_config *config, t_map *map_struct, char **map);
+void	check_particular_cases(t_config *config, t_map *map_data, char **map);
 /*Files*/
 int		open_for_the_xpm(char *filename);
-int		alloc_and_stock_lines(t_map *map_struct);
+int		alloc_and_stock_lines(t_map *map_data);
 int		open_for_the_map(t_map *map_data);
 
 void	actualize_nb_of_col(char *line, int *nb_of_cols);
 char	*trim_new_line(char *line);
 int		ft_putendl_fd_cub(char *str, int fd);
 int		is_whitespace(char c);
-int		is_valid_scene_character(char c, t_map *map_struct);
+int		is_valid_scene_character(char c, t_map *map_data);
 /*Debugg*/
 void	print_the_map(char **map);
 int		ft_strslen(char **strs);
@@ -117,7 +117,7 @@ int		rgbstr_to_int(char *line);
 int		ft_result_color(char *str, int i);
 /*Clear*/
 void	error_exit(t_config *config, char *message);
-void	free_map_struct(t_map *map_data);
+void	free_map_data(t_map *map_data);
 void	free_config(t_config *config);
 void	free_tab(char **tab);
 /*utils*/

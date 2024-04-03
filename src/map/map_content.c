@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_content.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 00:20:23 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:33:54 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:28:05 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	is_valid(int i, int j, t_config *config)
 {
 	char	c;
 
-	c = config->map_struct->map[i][j];
+	c = config->map_data->map[i][j];
 	if (!c || (c != WALL && c != FREE_WAY && c != PLAYER_NORTH
 			&& c != PLAYER_SOUTH && c != PLAYER_EAST && c != PLAYER_WEST))
 	{
@@ -26,10 +26,10 @@ void	is_valid(int i, int j, t_config *config)
 	}
 }
 
-int	map_empty(t_map *map_struct, t_config *config)
+int	map_empty(t_map *map_data, t_config *config)
 {
 	(void)config;
-	if (map_struct->y == 0 || map_struct->x == 0)
+	if (map_data->y == 0 || map_data->x == 0)
 	{
 		ft_putendl_fd_cub(ERROR_FILE_EMPTY, 2);
 		free_config(config);
@@ -38,31 +38,30 @@ int	map_empty(t_map *map_struct, t_config *config)
 	return (EXIT_SUCCESS);
 }
 
-int	is_map_border_closed(t_map *map_struct, t_config *config, char **map)
+int	is_map_border_closed(t_map *map_data, t_config *config, char **map)
 {
-	check_first_line(map_struct, config, map);
-	map_struct->i_end_of_tc += 1;
-	while (map[map_struct->i_end_of_tc])
+	check_first_line(map_data, config, map);
+	map_data->i_end_of_tc += 1;
+	while (map[map_data->i_end_of_tc])
 	{
-		while (map[map_struct->i_end_of_tc][map_struct->j_end_of_tc])
+		while (map[map_data->i_end_of_tc][map_data->j_end_of_tc])
 		{
-			if (check_player(map[map_struct
-										->i_end_of_tc][map_struct->j_end_of_tc]))
+			if (check_player(map[map_data->i_end_of_tc][map_data->j_end_of_tc]))
 			{
-				check_particular_cases(config, map_struct, map);
-				is_valid(map_struct->i_end_of_tc, map_struct->j_end_of_tc + 1,
-						config);
-				is_valid(map_struct->i_end_of_tc, map_struct->j_end_of_tc - 1,
-						config);
-				is_valid(map_struct->i_end_of_tc - 1, map_struct->j_end_of_tc,
-						config);
-				is_valid(map_struct->i_end_of_tc + 1, map_struct->j_end_of_tc,
-						config);
+				check_particular_cases(config, map_data, map);
+				is_valid(map_data->i_end_of_tc, map_data->j_end_of_tc + 1,
+					config);
+				is_valid(map_data->i_end_of_tc, map_data->j_end_of_tc - 1,
+					config);
+				is_valid(map_data->i_end_of_tc - 1, map_data->j_end_of_tc,
+					config);
+				is_valid(map_data->i_end_of_tc + 1, map_data->j_end_of_tc,
+					config);
 			}
-			map_struct->j_end_of_tc++;
+			map_data->j_end_of_tc++;
 		}
-		map_struct->j_end_of_tc = 0;
-		map_struct->i_end_of_tc++;
+		map_data->j_end_of_tc = 0;
+		map_data->i_end_of_tc++;
 	}
 	return (EXIT_SUCCESS);
 }

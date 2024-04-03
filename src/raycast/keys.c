@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:04:04 by mapierre          #+#    #+#             */
-/*   Updated: 2024/04/03 15:52:35 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:19:33 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	clean_game(t_data *data)
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	close(data->config->map_struct->fd);
+	close(data->config->map_data->fd);
 	free_config(data->config);
 	exit(0);
 }

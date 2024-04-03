@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tc_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:06:50 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:30:29 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 20:19:33 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	handle_north_texture(char *line, t_config *config)
 	free(config->north_texture);
 	config->north_texture = ft_strdup_cub(line);
 	if (config->flag == 6)
-		config->map_struct->j_end_of_tc = ft_strlen(line);
+		config->map_data->j_end_of_tc = ft_strlen(line);
 }
 
 void	handle_south_texture(char *line, t_config *config)
@@ -35,7 +35,7 @@ void	handle_south_texture(char *line, t_config *config)
 	free(config->south_texture);
 	config->south_texture = ft_strdup_cub(line);
 	if (config->flag == 6)
-		config->map_struct->j_end_of_tc = ft_strlen(line);
+		config->map_data->j_end_of_tc = ft_strlen(line);
 }
 
 void	handle_east_texture(char *line, t_config *config)
@@ -48,7 +48,7 @@ void	handle_east_texture(char *line, t_config *config)
 	free(config->east_texture);
 	config->east_texture = ft_strdup_cub(line);
 	if (config->flag == 6)
-		config->map_struct->j_end_of_tc = ft_strlen(line);
+		config->map_data->j_end_of_tc = ft_strlen(line);
 }
 
 void	handle_west_texture(char *line, t_config *config)
@@ -61,5 +61,5 @@ void	handle_west_texture(char *line, t_config *config)
 	free(config->west_texture);
 	config->west_texture = ft_strdup_cub(line);
 	if (config->flag == 6)
-		config->map_struct->j_end_of_tc = ft_strlen(line);
+		config->map_data->j_end_of_tc = ft_strlen(line);
 }
