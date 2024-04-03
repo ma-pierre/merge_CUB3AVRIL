@@ -36,6 +36,7 @@ SRCS		:= 	\
 			raycast/move_camera.c\
 			raycast/keys.c\
 			raycast/image.c\
+			raycast/minimap.c\
 			
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

@@ -6,50 +6,58 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 01:55:35 by mapierre          #+#    #+#             */
-/*   Updated: 2024/04/03 00:38:31 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:19:42 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3D.h"
+#include "cub3D.h"
 
-void    move_forward(t_data *data)
+void	move_forward(t_data *data)
 {
-    if (data->WorldMap[(int)(data->posX + data->dirX * data->moveSpeed)][(int)(data->posY)] == '0')
-			data->posX += data->dirX * data->moveSpeed;
-	if (data->WorldMap[(int)(data->posX)][(int)(data->posY + data->dirY * data->moveSpeed)] == '0')
-			data->posY += data->dirY * data->moveSpeed;
+	if (data->game_map[(int)(data->pos_x + data->dir_x * data->move_speed)]
+			[(int)(data->pos_y)] == '0')
+			data->pos_x += data->dir_x * data->move_speed;
+	if (data->game_map[(int)(data->pos_x)]
+			[(int)(data->pos_y + data->dir_y * data->move_speed)] == '0')
+			data->pos_y += data->dir_y * data->move_speed;
 }
 
-void    move_back(t_data *data)
+void	move_back(t_data *data)
 {
-    if (data->WorldMap[(int)(data->posX - data->dirX * data->moveSpeed)][(int)(data->posY)] == '0')
-			data->posX -= data->dirX * data->moveSpeed;
-	if (data->WorldMap[(int)(data->posX)][(int)(data->posY - data->dirY * data->moveSpeed)] == '0')
-			data->posY -= data->dirY * data->moveSpeed;
+	if (data->game_map[(int)(data->pos_x - data->dir_x * data->move_speed)]
+			[(int)(data->pos_y)] == '0')
+			data->pos_x -= data->dir_x * data->move_speed;
+	if (data->game_map[(int)(data->pos_x)]
+			[(int)(data->pos_y - data->dir_y * data->move_speed)] == '0')
+			data->pos_y -= data->dir_y * data->move_speed;
 }
 
-void move_left(t_data *data)
+void	move_left(t_data *data)
 {
-    double  perpDirX;
-    double  perpDirY;
+	double  perp_dir_x;
+	double  perp_dir_y;
 
-    perpDirX = data->dirY;
-    perpDirY = -data->dirX;   
-    if (data->WorldMap[(int)(data->posX + perpDirX * data->moveSpeed)][(int)(data->posY)] == '0')
-        data->posX += perpDirX * data->moveSpeed;
-    if (data->WorldMap[(int)(data->posX)][(int)(data->posY + perpDirY * data->moveSpeed)] == '0')
-        data->posY += perpDirY * data->moveSpeed;
+	perp_dir_x = data->dir_y;
+	perp_dir_y = -data->dir_x;   
+	if (data->game_map[(int)(data->pos_x + perp_dir_x * data->move_speed)]
+			[(int)(data->pos_y)] == '0')
+		data->pos_x += perp_dir_x * data->move_speed;
+	if (data->game_map[(int)(data->pos_x)]
+			[(int)(data->pos_y + perp_dir_y * data->move_speed)] == '0')
+		data->pos_y += perp_dir_y * data->move_speed;
 }
 
-void move_right(t_data *data)
+void	move_right(t_data *data)
 {
-    double  perpDirX;
-    double  perpDirY;
-    
-    perpDirX = -data->dirY;
-    perpDirY = data->dirX;
-    if (data->WorldMap[(int)(data->posX + perpDirX * data->moveSpeed)][(int)(data->posY)] == '0')
-        data->posX += perpDirX * data->moveSpeed;
-    if (data->WorldMap[(int)(data->posX)][(int)(data->posY + perpDirY * data->moveSpeed)] == '0')
-        data->posY += perpDirY * data->moveSpeed;
+	double  perp_dir_x;
+	double  perp_dir_y;
+	
+	perp_dir_x = -data->dir_y;
+	perp_dir_y = data->dir_x;
+	if (data->game_map[(int)(data->pos_x + perp_dir_x * data->move_speed)]
+			[(int)(data->pos_y)] == '0')
+		data->pos_x += perp_dir_x * data->move_speed;
+	if (data->game_map[(int)(data->pos_x)]
+			[(int)(data->pos_y + perp_dir_y * data->move_speed)] == '0')
+		data->pos_y += perp_dir_y * data->move_speed;
 }

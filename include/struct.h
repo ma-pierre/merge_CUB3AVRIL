@@ -6,22 +6,22 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 02:05:10 by mapierre          #+#    #+#             */
-/*   Updated: 2024/04/03 02:17:59 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:29:36 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-#define	STRUCT_H
-
+# define STRUCT_H
 
 typedef struct s_map
 {
 	char	**map;
-	int y;      // nb de lignes
-	int x;      // nb de colonnes
-	char *line; //line recuperee avec le gnl
-	char	*col;
 	char	*map_name;
+	char	*col;
+	char	*line;
+	char	player_start_dir;
+	int		y;
+	int		x;
 	int		fd;
 	int		i_end_of_tc;
 	int		j_end_of_tc;
@@ -30,7 +30,6 @@ typedef struct s_map
 	int		beg_index;
 	int		end_i;
 	int		end_j;
-	char	player_start_dir;
 	int		flag_pos;
 }			t_map;
 
@@ -55,31 +54,29 @@ typedef struct t_mlx
 
 typedef struct s_key
 {
-    int     s;
-    int     w;
-    int     d;
-    int     a;
-	int     esc;
-    int     l_arrow;
-    int     r_arrow;
-}   			t_key;
+	int	s;
+	int	w;
+	int	d;
+	int	a;
+	int	esc;
+	int	l_arrow;
+	int	r_arrow;
+}			t_key;
 
-typedef	struct s_raycast
+typedef struct s_raycast
 {
-	double	cameraX;
-	double	rayDirX;
-	double	rayDirY;
-	int		mapX;
-	int		mapY;
-	double	sideDistX;
-	double	sideDistY;
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist;
-	int		stepX;
-	int		stepY;
-//	int		hit;
-//	int		side;
+	double	cam_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_x;
+	double	side_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_disst;
+	int		step_x;
+	int		step_y;
 }				t_raycast;
 
 typedef struct s_image
@@ -91,47 +88,25 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-typedef struct	s_data
+typedef struct s_data
 {
-	double posX;
-	double posY;
-	double dirX;
-	double dirY;
-	double planeX;
-	double planeY;
-	double	moveSpeed;
-	double	rotSpeed;
-	char	**WorldMap;
-	char	player_start_dir;
-	t_key   keys;
-	void	*mlx;
-	void	*win;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	double		move_speed;
+	double		rot_speed;
+	char		**game_map;
+	int			map_witdh;
+	int			map_height;
+	char		player_start_dir;
+	t_key		keys;
+	void		*mlx;
+	void		*win;
 	t_config	*config;
 	t_raycast	raycast_var;
 }				t_data;
-
-/*
-typedef struct	s_data
-{
-	double posX;
-	double posY;
-	double dirX;
-	double dirY;
-	double planeX;
-	double planeY;
-	double	moveSpeed;
-	double	rotSpeed;
-	char	player_start_dir;
-	    void    *minimap_img;  // Image de la minimap
-    char    *minimap_addr;
-	 int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-
-	t_key   keys;
-	void	*mlx;
-	void	*win;
-}				t_data;
-*/
 
 #endif

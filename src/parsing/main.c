@@ -6,7 +6,7 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:45:06 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 02:45:58 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:39:15 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,19 +116,19 @@ int	main(int argc, char *argv[])
 	data.config = config;
 	data.player_start_dir = config->map_struct->player_start_dir;
 	printf("PLAYERDIR = %c \n", data.player_start_dir);
-	data.WorldMap = config->map_struct->map;
+	data.game_map = config->map_struct->map;
 	int i = 0;
 	int j;
-	while(data.WorldMap[i])
+	while(data.game_map[i])
 	{
 			j = 0;
-		while(data.WorldMap[i][j])
+		while(data.game_map[i][j])
 		{ 
-			if (data.WorldMap[i][j] == data.player_start_dir)
+			if (data.game_map[i][j] == data.player_start_dir)
 			{
-				data.posX = (double)j ;
-				data.posY = (double)i ;
-				data.WorldMap[i][j] = 0;
+				data.pos_x = (double)j ;
+				data.pos_y = (double)i ;
+				data.game_map[i][j] = 0;
 				printf(" i = %d j = %d \n", i , j);
 			}
 			j++;
@@ -141,18 +141,21 @@ int	main(int argc, char *argv[])
 		return (1);
 	}
 	init_player_direction(&data);
-	data.moveSpeed = 0.01;
-	data.rotSpeed = 0.01;
+	data.move_speed = 0.04;
+	data.rot_speed = 0.04;
+	data.map_witdh = 0;
+	data.map_height = 0;
+	readtab(&data);
 	
 	init_keys(&data);
-	data.win = mlx_new_window(data.mlx, screenWidth, screenHeight, "eya et marine");
-	mlx_hook(data.win, KeyPress, KeyPressMask, key_press, &data);
-	mlx_hook(data.win, KeyRelease, KeyReleaseMask, key_release, &data);
+	data.win = mlx_new_window(data.mlx, SCREEN_W, SCREEN_H, "eya et marine");
+	mlx_hook(data.win, KEYPRESS, (1L<<0), key_press, &data);
+	mlx_hook(data.win, KEYRELEASE, (1L<<1), key_release, &data);
 	mlx_loop_hook(data.mlx, &do_frame, &data);
 	mlx_hook(data.win, 17, 0, &clean_game, &data);
 	mlx_loop(data.mlx);
 	close(config->map_struct->fd);
 	//free_config(config);	
-	free_config(config);
+	//free_config(config);
 	return (0);
 }
