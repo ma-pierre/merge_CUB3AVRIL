@@ -6,7 +6,7 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:45:06 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 15:39:15 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:23:22 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ int	main(int argc, char *argv[])
 	}
 	parsing_part(config, argv[1]);
 	////////////////////////////////
+	print_the_map(config->map_struct->map);
 	data.config = config;
 	data.player_start_dir = config->map_struct->player_start_dir;
-	printf("PLAYERDIR = %c \n", data.player_start_dir);
 	data.game_map = config->map_struct->map;
 	int i = 0;
 	int j;

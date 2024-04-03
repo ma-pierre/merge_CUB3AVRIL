@@ -6,7 +6,7 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 09:49:21 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:33:15 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:15:07 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	retrieve_the_final_map(t_map *map_struct, t_config *config)
 	i_final = 0;
 	map_final = malloc_the_map(config, i);
 	i = map_struct->i_begin_the_map;
+	printf("debut carte : %s\n", map_struct->map[map_struct->i_begin_the_map]);
+	j = 0;
 	while (i <= map_struct->end_i)
 	{
 		j = 0;

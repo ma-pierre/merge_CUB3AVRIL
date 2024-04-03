@@ -6,7 +6,7 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 22:57:11 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:30:11 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:22:05 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,22 @@ void	find_map_boundaries(t_map *map_struct, t_config *config)
 	int	j;
 
 	map_struct->i_begin_the_map = map_struct->i_end_of_tc;
+	printf(" endo of texture and color + spaces : %s\n", map_struct->map[map_struct->i_end_of_tc]);
+	printf(" endo of texture and color + spaces + 1: %s\n", map_struct->map[map_struct->i_end_of_tc + 1]);
+
 	while (map_struct->map[map_struct->i_begin_the_map])
 	{
 		j = 0;
 		while (map_struct->map[map_struct->i_begin_the_map][j] == ' '
-				&& map_struct->map[map_struct->i_begin_the_map][j] == '\0'
-				&& map_struct->map[map_struct->i_begin_the_map][j] == '\n')
+				|| map_struct->map[map_struct->i_begin_the_map][j] == '\0'
+				|| map_struct->map[map_struct->i_begin_the_map][j] == '\n')
 			j++;
 		if (map_struct->map[map_struct->i_begin_the_map][j] != '\0'
-				&& map_struct->map[map_struct->i_begin_the_map][j] != '\n'
-				&& map_struct->map[map_struct->i_begin_the_map][j] != ' ')
+				|| map_struct->map[map_struct->i_begin_the_map][j] != '\n'
+				|| map_struct->map[map_struct->i_begin_the_map][j] != ' ')
 			break ;
+			//incrementer que si au bout de la ligne 
+		
 		map_struct->i_begin_the_map++;
 	}
 	if (!map_struct->map[map_struct->i_begin_the_map])
@@ -149,6 +154,5 @@ int	is_map_valid(t_map *map_struct, t_config *config)
 	validate_map_characters_and_position(map_struct, config);
 	check_map_integrity(map_struct, config);
 	print_the_map(map_struct->map);
-	printf("\n\n parsing versus exec \n\n");
 	return (EXIT_SUCCESS);
 }

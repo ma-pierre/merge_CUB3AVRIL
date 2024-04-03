@@ -6,7 +6,7 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:06:38 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 01:31:02 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:58:20 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void	print_the_map(char **map)
 	int	i;
 
 	i = 0;
+	printf("BEGINING OF THE MAP \n");
 	while (map[i])
 	{
 		printf("%s\n", map[i]);
 		i++;
 	}
+	printf("END OF THE MAP \n\n");
 }
 
 int	ft_strslen(char **str)
