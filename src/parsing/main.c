@@ -6,7 +6,7 @@
 /*   By: mapierre <mapierre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:45:06 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 02:18:35 by mapierre         ###   ########.fr       */
+/*   Updated: 2024/04/03 02:45:58 by mapierre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,20 +140,16 @@ int	main(int argc, char *argv[])
 	{
 		return (1);
 	}
-	//printf("POSX = %f, POSY = %f , STARTDIR = %c\n", data.posX, data.posY, data.player_start_dir);
 	init_player_direction(&data);
 	data.moveSpeed = 0.01;
 	data.rotSpeed = 0.01;
 	
 	init_keys(&data);
 	data.win = mlx_new_window(data.mlx, screenWidth, screenHeight, "eya et marine");
-	//init_minimap(&data);
 	mlx_hook(data.win, KeyPress, KeyPressMask, key_press, &data);
-	//printf("KEY______PRESSSSSSS_ OOOOOKKKKKKKE\n");
 	mlx_hook(data.win, KeyRelease, KeyReleaseMask, key_release, &data);
-	//printf("KEY_RELEAAAAASSSSSSE______OK\n");
 	mlx_loop_hook(data.mlx, &do_frame, &data);
-	//printf("LOOOOOP_______HOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOKKKKE\n");
+	mlx_hook(data.win, 17, 0, &clean_game, &data);
 	mlx_loop(data.mlx);
 	close(config->map_struct->fd);
 	//free_config(config);	

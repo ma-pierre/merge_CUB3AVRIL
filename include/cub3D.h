@@ -149,7 +149,7 @@ int		raycast_dda(t_data *data);
 int     do_frame(t_data *data);
 void    init_player_direction(t_data *data);
 
-void    clean_game(t_data *data);
+int    clean_game(t_data *data);
 
 ///img
 t_image	image_new(void *mlx, size_t w, size_t h);

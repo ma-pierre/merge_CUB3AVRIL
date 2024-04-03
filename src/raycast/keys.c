@@ -71,13 +71,13 @@ int	handle_keypress(t_data *data)
 	return (0);
 }
 
-void    clean_game(t_data *data)
+int    clean_game(t_data *data)
 {
-
+   // mlx_loop_end(data->mlx); CA CHANGE RIEN AU LEAK POUR LINSTANT
 	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
-	//ft_freetab(data->map);
 	free(data->mlx);
     free_config(data->config);
+    exit(0);
 }
