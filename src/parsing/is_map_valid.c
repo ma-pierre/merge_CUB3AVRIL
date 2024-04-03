@@ -6,7 +6,7 @@
 /*   By: eghaffar <eghaffar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 22:57:11 by eghaffar          #+#    #+#             */
-/*   Updated: 2024/04/03 20:25:47 by eghaffar         ###   ########.fr       */
+/*   Updated: 2024/04/03 21:46:27 by eghaffar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void	find_map_boundaries(t_map *map_data, t_config *config)
 			(map_data->map[map_data->i_begin_the_map][j] != '\n'
 					|| map_data->map[map_data->i_begin_the_map][j] != ' '))
 			break ;
-		printf("je sais pas %s\n",
-				map_data->map[map_data->i_begin_the_map]);
 		map_data->i_begin_the_map++;
 	}
 	if (!map_data->map[map_data->i_begin_the_map])
